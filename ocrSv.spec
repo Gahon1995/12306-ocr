@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['.\\main.py'],
+a = Analysis(['.\\ocrSv.py'],
              pathex=['E:\\WorkShop\\Git\\12306-captcha\\vven'],
              binaries=[],
              datas=[],

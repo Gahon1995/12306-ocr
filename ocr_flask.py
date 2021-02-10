@@ -1,12 +1,11 @@
 from base64 import b64decode
 
 from flask import Flask, jsonify, request
-from config import Config
+from ocr.config import Config
 from json import loads
 from ocr.ml_predict import Predict
 
 app = Flask(__name__)
-
 
 class Web:
     def run(self):

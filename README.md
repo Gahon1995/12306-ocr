@@ -1,23 +1,5 @@
 # 12306 验证码识别服务
 
-## 发布打包版本
-
-费劲巴拉的删减到小于50M的压缩包，[码云发布地址](https://gitee.com/sobweb/py12306-ocr/releases/0.1)
-
-### 分流Bypass
-1. 修改本机hosts(路径: `C:\Windows\System32\drivers\etc\hosts`), 插入：`127.0.0.1 v2-no-secure-api.jsdama.com`
-2. 打开Bypass，登录时的验证码手动操作
-3. 如果系统有开代理，进入Bypass，`设置代理`-`禁用IE代理`
-4. `config.toml`默认配置`port = 80`，启动`打码.bat`
-5. `验证码设置`-`第三方厂商`，平台选`联众`，用户名/密码任意，`登录`，`测试打码`
-
-### 订票助手
-1. 将插件覆盖至订票助手目录
-2. `设置`->`远程打码`->`远程打码引擎`--`本地打码`，用户名/密码任意，`登录`
-3. 勾选登录远程打码(登录时自动打码)
-4. 保存配置
-5. 修改`config.toml`中`port = 8082`，启动`打码.bat`
-
 ## 使用
 需要运行在 python 3.6 以上版本
 
@@ -42,6 +24,18 @@ python main.py
 python web.py
 ```
 用于识别文字的模型文件较大，没有放在仓库中，第一次运行会自动进行联网下载，所以可能需要等待一会才能运行起来。
+
+## Docker 使用
+```bash
+docker run -d -p 8000:8000 pjialin/12306-ocr
+```
+启动后通过 `http://IP:8000` 进行访问
+
+### 对接 Py12306
+打开 **py12306** 目录下的 `py12306/helpers/api.py` 文件，找到 `API_FREE_CODE_QCR_API=` 的位置，并替换成当前 ocr 服务的接口地址，如：
+```
+API_FREE_CODE_QCR_API = 'http://127.0.0.1:8000/check/'
+```
 
 ## 免费用ByPass第三方联众打码配置
 需要手动更改本机hosts, 防小白给出目录: `C:\Windows\System32\drivers\etc`, 
