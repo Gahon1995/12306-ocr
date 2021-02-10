@@ -4,13 +4,13 @@
 需要运行在 python 3.6 以上版本
 
 **1. 安装依赖**
-```bash
-git clone https://github.com/pjialin/12306-ocr
 
-tensorflow版本为1.14，需要根据自己的平台[硬件环境选择](https://github.com/fo40225/tensorflow-windows-wheel/tree/master/1.14.0/py37)手动下载安装
+>git clone https://github.com/pjialin/12306-ocr
+>
+>tensorflow版本为1.14，需要根据自己的平台[硬件环境选择](https://github.com/fo40225/tensorflow-windows-wheel/tree/master/1.14.0/py37)手动下载安装
+>
+>pip install -r requirements.txt
 
-pip install -r requirements.txt
-```
 **2. 配置程序**
 ```bash
 修改config.toml中的端口port，80+host适用于Bypass，8082适用于订票助手
