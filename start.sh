@@ -1,1 +1,1 @@
-nohup python -u ./main.py >> falcon.log 2>&1 &
+nohup python -u ./ocrSv.py >> falcon.log 2>&1 &

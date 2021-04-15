@@ -2,9 +2,8 @@
 .DS_Store
 venv
 __pycache__
-config.toml
 docker-compose.yml
-ocr/12306.image.model.h5
+tensorflow-1.14.0-cp37-cp37m-win_amd64.whl
 .vscode
 vven
 /*.log

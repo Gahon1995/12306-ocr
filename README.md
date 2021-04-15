@@ -4,26 +4,35 @@
 需要运行在 python 3.6 以上版本
 
 **1. 安装依赖**
-```bash
-git clone https://github.com/pjialin/12306-ocr
 
-pip install -r requirements.txt
-```
+>git clone https://github.com/pjialin/12306-ocr
+>
+>tensorflow版本为1.14，需要根据自己的平台[硬件环境选择](https://github.com/fo40225/tensorflow-windows-wheel/tree/master/1.14.0/py37)手动下载安装
+>
+>pip install -r requirements.txt
+
 **2. 配置程序**
 ```bash
-cp config.toml.example config.toml
+修改config.toml中的端口port，80+host适用于Bypass，8082适用于订票助手
 ```
 **3. 运行程序**
 
 监听config.toml文件配置的端口, 默认8082, 服务于py12306
 ```bash
-python main.py 
+python ocrSv.py 
 ```
-模拟**若快**需要监听80端口, 按下面的方式直接运行, 或者修改config.toml中的端口后按上面的来:
+
+## Docker 使用
 ```bash
-python web.py
+docker run -d -p 8000:8000 pjialin/12306-ocr
 ```
-用于识别文字的模型文件较大，没有放在仓库中，第一次运行会自动进行联网下载，所以可能需要等待一会才能运行起来。
+启动后通过 `http://IP:8000` 进行访问
+
+### 对接 Py12306
+打开 **py12306** 目录下的 `py12306/helpers/api.py` 文件，找到 `API_FREE_CODE_QCR_API=` 的位置，并替换成当前 ocr 服务的接口地址，如：
+```
+API_FREE_CODE_QCR_API = 'http://127.0.0.1:8000/check/'
+```
 
 ## 免费用ByPass第三方联众打码配置
 需要手动更改本机hosts, 防小白给出目录: `C:\Windows\System32\drivers\etc`, 
